@@ -2,6 +2,7 @@
 import {postStudent} from "../../redux/actions";
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
+import "../../App.css";
 
 const PostStudent = () => {
 	const dispatch = useDispatch();
@@ -53,56 +54,112 @@ const PostStudent = () => {
 	};
 	console.log(newStudent);
 	return (
-		<div className="min-h-screen flex items-center justify-evenly">
-			<form onSubmit={handleSubmit} className="min-h-screen lg:min-h-1/2 grid grid-cols-1 bg-slate-50 w-11/12 lg:w-1/3">
+		<div className="min-h-screen flex flex-col items-center justify-evenly">
+			<form
+				onSubmit={handleSubmit}
+				className="min-h-screen lg:min-h-1/2 grid grid-cols-1 w-full bg-gradient lg:w-1/3 rounded-lg p-2">
 				<h1 className="text-center">Estudiante</h1>
 				<div className="grid grid-cols-1 gap-2">
-					<label className="flex flex-row justify-between px-[10px]">
-						Nombre:
-						<input type="text" name="name" value={newStudent.name} onChange={handleChange} />
+					<label className="flex flex-row  items-center justify-between px-[10px]">
+						Nombre
+						<input className="shadow-sm" type="text" name="name" value={newStudent.name} onChange={handleChange} />
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Cumpleaños:
-						<input type="date" name="birthday" value={newStudent.birthday} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="date"
+							name="birthday"
+							value={newStudent.birthday}
+							onChange={handleChange}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Teléfono:
-						<input type="text" name="telephone" value={newStudent.telephone} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="text"
+							name="telephone"
+							value={newStudent.telephone}
+							onChange={handleChange}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Día que viene:
-						<input type="text" name="day" value={newStudent.day} onChange={handleChange} />
+						<input className="shadow-sm" type="text" name="day" value={newStudent.day} onChange={handleChange} />
 					</label>
 				</div>
 				<div className="grid grid-cols-1 gap-2">
 					<h1 className="text-center">Clase</h1>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre:
-						<input type="text" name="className" value={newStudent.className} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="text"
+							name="className"
+							value={newStudent.className}
+							onChange={handleChange}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Día:
-						<input type="date" name="classDay" value={newStudent.classDay} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="date"
+							name="classDay"
+							value={newStudent.classDay}
+							onChange={handleChange}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Precio:
-						<input type="text" name="classPrice" value={newStudent.classPrice} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="text"
+							name="classPrice"
+							value={newStudent.classPrice}
+							onChange={handleChange}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Pagada
-						<input type="checkbox" name="classPaid" value={newStudent.classPaid} onChange={handleChangeCheckbox} />
+						<input
+							className="shadow-sm"
+							type="checkbox"
+							name="classPaid"
+							value={newStudent.classPaid}
+							onChange={handleChangeCheckbox}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Precio del horno:
-						<input type="text" name="ovenPrice" value={newStudent.ovenPrice} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="text"
+							name="ovenPrice"
+							value={newStudent.ovenPrice}
+							onChange={handleChange}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre del material:
-						<input type="textarea" name="materialName" value={newStudent.materialName} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="textarea"
+							name="materialName"
+							value={newStudent.materialName}
+							onChange={handleChange}
+						/>
 					</label>
-					<label className="flex flex-row justify-between px-[10px]">
+					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Precio del material:
-						<input type="text" name="materialPrice" value={newStudent.materialPrice} onChange={handleChange} />
+						<input
+							className="shadow-sm"
+							type="text"
+							name="materialPrice"
+							value={newStudent.materialPrice}
+							onChange={handleChange}
+						/>
 					</label>
 				</div>
 				<button className="text-center">Enviar</button>

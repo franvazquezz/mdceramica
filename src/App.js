@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import PostStudent from './components/forms/PostStudent';
 import {Routes, Route} from "react-router-dom";
 import StudentDetail from './components/StudentDetail';
+import Calendar from './components/Calendar';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path='/poststudent' element={<PostStudent />} />
-        <Route path='/student/:id' element={<StudentDetail/>}/>
+        <Route path='/student/:id' element={<StudentDetail />} />
+        <Route path="/calendar" element={<Calendar />} />
       </Routes>
     </div>
   );

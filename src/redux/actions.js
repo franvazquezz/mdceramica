@@ -34,3 +34,14 @@ export const getStudentById = (id) => {
 
   }
 }
+
+export const putStudent = (id, udpatedStudent) => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.put(`${URL}/students/${id}`, udpatedStudent)
+      dispatch({ type: 'PUT_STUDENT', payload: data })
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

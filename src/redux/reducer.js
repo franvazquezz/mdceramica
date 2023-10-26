@@ -21,6 +21,10 @@ const reducer = (state = initialState, action) => {
       return {
         currentStudent: action.payload
       }
+    case 'PUT_STUDENT':
+      return {
+        currentStudent: action.payload
+      }
     default:
       return state;
    }
