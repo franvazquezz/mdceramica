@@ -8,20 +8,25 @@
     "start": "next start",
     "lint": "next lint"
   },
-    "dependencies": {
+  "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@react-spring/web": "^9.7.3",
+    "@reduxjs/toolkit": "^1.9.7",
     "animate.css": "^4.1.1",
     "axios": "^1.5.1",
     "jose": "^4.14.4",
     "mui-tel-input": "^3.2.2",
     "next": "latest",
+    "next-redux-wrapper": "^8.1.0",
     "postcss": "8.4.30",
     "react": "latest",
     "react-dom": "latest",
     "react-redux": "^8.1.1",
     "react-select": "^5.7.4",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
