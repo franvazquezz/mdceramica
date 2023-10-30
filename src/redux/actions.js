@@ -45,3 +45,21 @@ export const putStudent = (id, udpatedStudent) => {
     console.log(error);
   }
 }
+
+export const postClass = (id, newClass) => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.post(`${URL}/students/${id}/classes`, newClass)
+      dispatch({ type: 'POST_CLASS', payload: data })
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getStudentDays = () => {
+  return {
+    type: 'GET_STUDENT_DAYS',
+    payload: studentsByDay
+  }
+}

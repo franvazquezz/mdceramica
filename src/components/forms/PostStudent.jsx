@@ -11,6 +11,7 @@ const PostStudent = () => {
 		birthday: "",
 		telephone: "",
 		day: "",
+		timetable: "",
 		className: "",
 		classPrice: "",
 		classPaid: false,
@@ -43,6 +44,7 @@ const PostStudent = () => {
 			birthday: "",
 			telephone: "",
 			day: "",
+			timetable: "",
 			className: "",
 			classPrice: "",
 			classPaid: false,
@@ -87,6 +89,10 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Día que viene:
 						<input className="shadow-sm" type="text" name="day" value={newStudent.day} onChange={handleChange} />
+					</label>
+					<label className="flex flex-row  items-center justify-between px-[10px]">
+						Horario:
+						<input className="shadow-sm" type="text" name="timetable" value={newStudent.timetable} onChange={handleChange} />
 					</label>
 				</div>
 				<div className="grid grid-cols-1 gap-2">
