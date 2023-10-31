@@ -57,9 +57,24 @@ export const postClass = (id, newClass) => {
   }
 }
 
-export const getStudentDays = () => {
-  return {
-    type: 'GET_STUDENT_DAYS',
-    payload: studentsByDay
+export const deleteStudent = (id) => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.delete(`${URL}/students/${id}`)
+      dispatch({ type: 'DELETE_STUDENT', payload: data })
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const putClass = (studentId, classId) => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.put(`${URL}/students/${studentId}/classes/${classId}`)
+      dispatch({ type: 'PUT_CLASS', payload: data })
+    }
+  } catch (error) {
+    console.log(error);
   }
 }

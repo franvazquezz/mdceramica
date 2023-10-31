@@ -2,14 +2,6 @@
 const initialState = {
   allStudents: [],
   allStudentsCalendar: [],
-  studentsByDay: {
-		lunes: [],
-		martes: [],
-		miercoles: [],
-		jueves: [],
-		viernes: [],
-		sabado: [],
-	},
   currentStudent: []
 }
 
@@ -38,19 +30,14 @@ const reducer = (state = initialState, action) => {
       return {
         currentStudent: action.payload
       }
-    case 'GET_STUDENT_DAYS':
-      const orderByDay = () => {
-        state.allStudentsCalendar.forEach((student) => {
-          student.day === "Lunes" && studentsByDay.lunes.push(student);
-          student.day === "Martes" && studentsByDay.martes.push(student);
-          student.day === "Miércoles" && studentsByDay.miercoles.push(student);
-          student.day === "Jueves" && studentsByDay.jueves.push(student);
-          student.day === "Viernes" && studentsByDay.viernes.push(student);
-          student.day === "Sábado" && studentsByDay.sabado.push(student);
-        });
-      };
-      orderByDay();
+    case 'DELETE_STUDENT':
       return {
+        ...state,
+        allStudents: [...state.allStudents, action.payload]
+      }
+    case 'PUT_CLASS':
+      return {
+        currentStudent: action.payload
       }
     default:
       return state;

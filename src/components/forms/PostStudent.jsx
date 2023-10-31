@@ -56,7 +56,7 @@ const PostStudent = () => {
 	};
 	console.log(newStudent);
 	return (
-		<div className="min-h-screen flex flex-col items-center justify-evenly">
+		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
 			<form
 				onSubmit={handleSubmit}
 				className="min-h-screen lg:min-h-1/2 grid grid-cols-1 w-full bg-gradient lg:w-1/3 rounded-lg p-2">
@@ -64,12 +64,12 @@ const PostStudent = () => {
 				<div className="grid grid-cols-1 gap-2">
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre
-						<input className="shadow-sm" type="text" name="name" value={newStudent.name} onChange={handleChange} />
+						<input className="shadow-sm text-end rounded-[20px] p-2" type="text" name="name" value={newStudent.name} onChange={handleChange} />
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Cumpleaños:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="date"
 							name="birthday"
 							value={newStudent.birthday}
@@ -79,7 +79,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Teléfono:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="text"
 							name="telephone"
 							value={newStudent.telephone}
@@ -88,11 +88,22 @@ const PostStudent = () => {
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Día que viene:
-						<input className="shadow-sm" type="text" name="day" value={newStudent.day} onChange={handleChange} />
+						<select className="shadow-sm text-end rounded-[20px] p-2 w-1/2" name="day" value={newStudent.day} onChange={handleChange}>
+							<option>Lunes</option>
+              <option>Martes</option>
+              <option>Miercoles</option>
+              <option>Jueves</option>
+              <option>Viernes</option>
+              <option>Sábado</option>
+						</select>
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Horario:
-						<input className="shadow-sm" type="text" name="timetable" value={newStudent.timetable} onChange={handleChange} />
+						<select className="shadow-sm text-end rounded-[20px] p-2 w-1/2" name="timetable" value={newStudent.timetable} onChange={handleChange}>
+							<option>10:00</option>
+              <option>16:00</option>
+              <option>18:30</option>
+						</select>
 					</label>
 				</div>
 				<div className="grid grid-cols-1 gap-2">
@@ -100,7 +111,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="text"
 							name="className"
 							value={newStudent.className}
@@ -110,7 +121,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Día:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="date"
 							name="classDay"
 							value={newStudent.classDay}
@@ -120,7 +131,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Precio:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="text"
 							name="classPrice"
 							value={newStudent.classPrice}
@@ -130,7 +141,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Pagada
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="checkbox"
 							name="classPaid"
 							value={newStudent.classPaid}
@@ -140,7 +151,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Precio del horno:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="text"
 							name="ovenPrice"
 							value={newStudent.ovenPrice}
@@ -150,7 +161,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre del material:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="textarea"
 							name="materialName"
 							value={newStudent.materialName}
@@ -160,7 +171,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Precio del material:
 						<input
-							className="shadow-sm"
+							className="shadow-sm text-end rounded-[20px] p-2"
 							type="text"
 							name="materialPrice"
 							value={newStudent.materialPrice}
@@ -170,6 +181,7 @@ const PostStudent = () => {
 				</div>
 				<button className="text-center">Enviar</button>
 			</form>
+			<a href="/">Volver</a>
 		</div>
 	);
 };
