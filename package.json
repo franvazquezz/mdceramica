@@ -41,7 +41,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "autoprefixer": "latest",
-    "daisyui": "^3.1.7",
+    "daisyui": "^3.9.4",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",

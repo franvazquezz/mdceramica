@@ -2,15 +2,16 @@
 const initialState = {
   allStudents: [],
   allStudentsCalendar: [],
-  currentStudent: []
+  currentStudent: [],
+  currentClass: [],
 }
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) { 
+  switch (action.type) {
     case 'GET_STUDENTS':
       return {
         ...state,
-        allStudents: action.payload, 
+        allStudents: action.payload,
         allStudentsCalendar: action.payload
       }
     case 'POST_STUDENT':
@@ -35,13 +36,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         allStudents: [...state.allStudents, action.payload]
       }
+    case 'GET_CLASS':
+      return {
+        currentClass: action.payload
+      }
     case 'PUT_CLASS':
+      return {
+        currentStudent: action.payload
+      }
+    case 'DELETE_CLASS':
       return {
         currentStudent: action.payload
       }
     default:
       return state;
-   }
+  }
 }
 
 export default reducer;

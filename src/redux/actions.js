@@ -68,11 +68,33 @@ export const deleteStudent = (id) => {
   }
 }
 
-export const putClass = (studentId, classId) => {
+export const getClass = (studentId, classId) => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.put(`${URL}/students/${studentId}/classes/${classId}`)
+      const { data } = await axios.get(`${URL}/classes/${classId}`)
+      dispatch({ type: 'GET_CLASS', payload: data })
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const putClass = (studentId, classId, updatedClass) => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.put(`${URL}/students/${studentId}/classes/${classId}`, updatedClass);
       dispatch({ type: 'PUT_CLASS', payload: data })
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const deleteClass = (studentId, classId) => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.delete(`${URL}/students/${studentId}/classes/${classId}`)
+      dispatch({ type: 'DELETE_CLASS', payload: data })
     }
   } catch (error) {
     console.log(error);

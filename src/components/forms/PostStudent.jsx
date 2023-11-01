@@ -13,12 +13,14 @@ const PostStudent = () => {
 		day: "",
 		timetable: "",
 		className: "",
+		classDay: "",
 		classPrice: "",
 		classPaid: false,
-		classDay: "",
 		ovenPrice: "",
+		ovenPaid: false,
 		materialName: "",
 		materialPrice: "",
+		materialPaid: false,
 	});
 
 	const handleChange = (e) => {
@@ -29,15 +31,26 @@ const PostStudent = () => {
 		}));
 	};
 	const handleChangeCheckbox = () => {
-		setNewStudent((prevStudent) => ({
-			...prevStudent,
-			classPaid: !prevStudent.classPaid,
+		setNewStudent((prevClass) => ({
+			...prevClass,
+			classPaid: !prevClass.classPaid,
+		}));
+	};
+	const handleChangeCheckboxOven = () => {
+		setNewStudent((prevClass) => ({
+			...prevClass,
+			ovenPaid: !prevClass.ovenPaid,
+		}));
+	};
+	const handleChangeCheckboxMaterial = () => {
+		setNewStudent((prevClass) => ({
+			...prevClass,
+			materialPaid: !prevClass.materialPaid,
 		}));
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(newStudent);
 		dispatch(postStudent(newStudent));
 		setNewStudent({
 			name: "",
@@ -64,7 +77,13 @@ const PostStudent = () => {
 				<div className="grid grid-cols-1 gap-2">
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre
-						<input className="shadow-sm text-end rounded-[20px] p-2" type="text" name="name" value={newStudent.name} onChange={handleChange} />
+						<input
+							className="shadow-sm text-end rounded-[20px] p-2"
+							type="text"
+							name="name"
+							value={newStudent.name}
+							onChange={handleChange}
+						/>
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Cumpleaños:
@@ -88,21 +107,29 @@ const PostStudent = () => {
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Día que viene:
-						<select className="shadow-sm text-end rounded-[20px] p-2 w-1/2" name="day" value={newStudent.day} onChange={handleChange}>
+						<select
+							className="shadow-sm text-end rounded-[20px] p-2 w-1/2"
+							name="day"
+							value={newStudent.day}
+							onChange={handleChange}>
 							<option>Lunes</option>
-              <option>Martes</option>
-              <option>Miercoles</option>
-              <option>Jueves</option>
-              <option>Viernes</option>
-              <option>Sábado</option>
+							<option>Martes</option>
+							<option>Miércoles</option>
+							<option>Jueves</option>
+							<option>Viernes</option>
+							<option>Sábado</option>
 						</select>
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Horario:
-						<select className="shadow-sm text-end rounded-[20px] p-2 w-1/2" name="timetable" value={newStudent.timetable} onChange={handleChange}>
+						<select
+							className="shadow-sm text-end rounded-[20px] p-2 w-1/2"
+							name="timetable"
+							value={newStudent.timetable}
+							onChange={handleChange}>
 							<option>10:00</option>
-              <option>16:00</option>
-              <option>18:30</option>
+							<option>16:00</option>
+							<option>18:30</option>
 						</select>
 					</label>
 				</div>
@@ -132,7 +159,7 @@ const PostStudent = () => {
 						Precio:
 						<input
 							className="shadow-sm text-end rounded-[20px] p-2"
-							type="text"
+							type="number"
 							name="classPrice"
 							value={newStudent.classPrice}
 							onChange={handleChange}
@@ -140,13 +167,15 @@ const PostStudent = () => {
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Pagada
-						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="checkbox"
-							name="classPaid"
-							value={newStudent.classPaid}
-							onChange={handleChangeCheckbox}
-						/>
+						<div className=" flex flex-row items-center justify-center w-1/2">
+							<input
+								className="shadow-sm text-end rounded-[20px] p-2"
+								type="checkbox"
+								name="classPaid"
+								value={newStudent.classPaid}
+								onChange={handleChangeCheckbox}
+							/>
+						</div>
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Precio del horno:
@@ -159,7 +188,19 @@ const PostStudent = () => {
 						/>
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Nombre del material:
+						Pagado
+						<div className=" flex flex-row items-center justify-center w-1/2">
+							<input
+								className="shadow-sm text-end rounded-[20px] p-2"
+								type="checkbox"
+								name="ovenPaid"
+								value={newStudent.ovenPaid}
+								onChange={handleChangeCheckboxOven}
+							/>
+						</div>
+					</label>
+					<label className="flex flex-row  items-center justify-between px-[10px]">
+						Nombre de los materiales:
 						<input
 							className="shadow-sm text-end rounded-[20px] p-2"
 							type="textarea"
@@ -169,7 +210,7 @@ const PostStudent = () => {
 						/>
 					</label>
 					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Precio del material:
+						Precio de materiales:
 						<input
 							className="shadow-sm text-end rounded-[20px] p-2"
 							type="text"
@@ -178,8 +219,22 @@ const PostStudent = () => {
 							onChange={handleChange}
 						/>
 					</label>
+					<label className="flex flex-row  items-center justify-between px-[10px]">
+						Pagados
+						<div className=" flex flex-row items-center justify-center w-1/2">
+							<input
+								className="shadow-sm text-end rounded-[20px] p-2"
+								type="checkbox"
+								name="materialPaid"
+								value={newStudent.materialPaid}
+								onChange={handleChangeCheckboxMaterial}
+							/>
+						</div>
+					</label>
+				<a href="/" className="text-center cursor-pointer" onClick={handleSubmit}>
+					Enviar
+				</a>
 				</div>
-				<button className="text-center">Enviar</button>
 			</form>
 			<a href="/">Volver</a>
 		</div>
