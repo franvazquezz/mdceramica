@@ -95,8 +95,33 @@ export const deleteClass = (studentId, classId) => {
     return async (dispatch) => {
       const { data } = await axios.delete(`${URL}/students/${studentId}/classes/${classId}`)
       dispatch({ type: 'DELETE_CLASS', payload: data })
+      alert(`La clase se ha elimminado exitosamente`)
     }
   } catch (error) {
     console.log(error);
+  }
+}
+
+export const getStudentByName = (name) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${URL}/students?name=${name}`);
+      dispatch({ type: 'GET_STUDENT_BY_NAME', payload: data });
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        // Manejar el error 404, por ejemplo, mostrando una alerta
+        alert(`No existe alumno con el nombre ${name[0].toUpperCase()+name.slice(1, name.length)}`);
+      } else {
+        // Para otros errores, puedes manejarlos de otra manera o mostrar un mensaje genérico
+        console.error('Error en la acción getStudentByName:', error);
+      }
+    }
+  };
+};
+
+export const removeFinder = () => {
+  return {
+    type: 'REMOVE_FINDER',
+    payload: 'nada'
   }
 }

@@ -5,12 +5,14 @@ import PostStudent from './components/forms/PostStudent';
 import {Routes, Route} from "react-router-dom";
 import StudentDetail from './components/StudentDetail';
 import Calendar from './components/Calendar';
+import FoundPage from './components/FoundPage';
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path='/found' element={<FoundPage />} />
         <Route path='/poststudent' element={<PostStudent />} />
         <Route path='/student/:id' element={<StudentDetail />} />
         <Route path="/calendar" element={<Calendar />} />

@@ -1,6 +1,7 @@
 
 const initialState = {
   allStudents: [],
+  studentsName: [],
   allStudentsCalendar: [],
   currentStudent: [],
   currentClass: [],
@@ -47,6 +48,15 @@ const reducer = (state = initialState, action) => {
     case 'DELETE_CLASS':
       return {
         currentStudent: action.payload
+      }
+    case 'GET_STUDENT_BY_NAME':
+      return {
+        ...state,
+        studentsName: [...action.payload]
+      }
+    case 'REMOVE_FINDER':
+      return {
+        studentsName: []
       }
     default:
       return state;
