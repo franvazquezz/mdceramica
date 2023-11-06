@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = 'https://mdceramicaback.onrender.com:10000'
+const URL = 'https://mdceramicaback.onrender.com'
 // const URL = 'http://localhost:3001'
 
 export const getStudents = () => {
