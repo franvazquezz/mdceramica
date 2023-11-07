@@ -10,7 +10,6 @@ export default function Dashboard() {
 	useEffect(() => {
 		dispatch(getStudents());
 	}, []);
-	console.log(studentsName);
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
 			<SearchBar />
