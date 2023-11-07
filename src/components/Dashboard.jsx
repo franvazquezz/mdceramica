@@ -14,6 +14,9 @@ export default function Dashboard() {
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
 			<SearchBar />
+			<a href="/poststudent" className="text-2xl text-gray-700">
+				Crear nuevo estudiante
+			</a>
 			<div className="flex flex-col content-fit">
 				{studentsName.length ? <h1 className="text-center font-bold text-2xl px-[10px]">Estudiantes encontrados</h1> : ""}
 				<div className="grid grid-cols-1 text-center p-3">
@@ -302,9 +305,6 @@ export default function Dashboard() {
 						)}
 				</div>
 			</div>
-			<a href="/poststudent" className="text-xl text-gray-400">
-				Crear nuevo estudiante
-			</a>
 		</div>
 	);
 }

@@ -124,7 +124,7 @@ const PostClassData = ({handleAddClass, id}) => {
 				<label className="flex flex-row  items-center justify-between px-[10px]">
 					Nombre de los materiales:
 					<input
-						className="shadow-sm text-end rounded-[20px] p-2"
+						className="shadow-sm text-end rounded-[20px] min-h-[40px] p-2"
 						type="textarea"
 						name="materialName"
 						value={newClass.materialName}
@@ -134,7 +134,7 @@ const PostClassData = ({handleAddClass, id}) => {
 				<label className="flex flex-row  items-center justify-between px-[10px]">
 					Precio de materiales:
 					<input
-						className="shadow-sm text-end rounded-[20px] p-2"
+						className="shadow-sm text-end rounded-[20px] min-h-[40px] p-2"
 						type="text"
 						name="materialPrice"
 						value={newClass.materialPrice}
@@ -156,13 +156,12 @@ const PostClassData = ({handleAddClass, id}) => {
 			</div>
 			<div className="flex flex-row items-center justify-evenly">
 				<a
-					className="text-center cursor-pointer flex flex-row items-center	justify-center pt-2"
+					className="text-center cursor-pointer flex flex-row items-center shadow-md justify-center pt-2"
 					onClick={handleAddClass}>
 					Volver
 				</a>
 				<a
-					href={`/student/${id}`}
-					className="text-center cursor-pointer flex flex-row items-center	justify-center pt-2"
+					className="text-center cursor-pointer flex flex-row items-center shadow-md	justify-center pt-2"
 					onClick={handleSubmitClass}>
 					Crear
 				</a>

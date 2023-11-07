@@ -118,7 +118,7 @@ const StudentDetail = () => {
 										</a>
 									</div>
 									<div className="flex flex-row text-left">
-										<ul className="w-[100px] h-[250px] grid grid-cols-1">
+										<ul className="w-[100px] h-[250px] grid grid-cols-1 gap-2">
 											<li>Clase</li>
 											<li>Día</li>
 											<li>Precio</li>
@@ -130,7 +130,7 @@ const StudentDetail = () => {
 											<li>Pagado</li>
 										</ul>
 										{/* <div className="grid gri-cols-1 lg:grid-cols-2 text-center gap-4"> */}
-										<div className="grid grid-cols-2 text-center gap-6">
+										<div className="grid grid-cols-1 text-center gap-6">
 											{currentStudent.classes &&
 												currentStudent.classes.map((item, index) => <ClassCard key={index} item={item} id={id} />)}
 										</div>

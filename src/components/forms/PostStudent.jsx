@@ -49,31 +49,47 @@ const PostStudent = () => {
 		}));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		dispatch(postStudent(newStudent));
-		setNewStudent({
-			name: "",
-			birthday: "",
-			telephone: "",
-			day: "",
-			timetable: "",
-			className: "",
-			classPrice: "",
-			classPaid: false,
-			classDay: "",
-			ovenPrice: "",
-			materialName: "",
-			materialPrice: "",
-		});
+		try {
+			const response = await dispatch(postStudent(newStudent));
+	
+			if (response.status === 200) {
+				// La solicitud fue exitosa, puedes actualizar el estado
+				alert(`Estudiante ${newStudent.name} fue creado correctamente`);
+				setNewStudent({
+					name: "",
+					birthday: "",
+					telephone: "",
+					day: "",
+					timetable: "",
+					className: "",
+					classPrice: "",
+					classPaid: false,
+					classDay: "",
+					ovenPrice: "",
+					materialName: "",
+					materialPrice: "",
+				});
+			} else {
+				// La respuesta no fue exitosa, puedes manejarlo de acuerdo a tus necesidades
+				console.log("La solicitud no fue exitosa. Código de estado:", response.status);
+				alert("La solicitud no fue exitosa. Por favor, inténtalo de nuevo.");
+			}
+		} catch (error) {
+			console.error("Error en la solicitud:", error);
+			alert("Error en la solicitud. Por favor, inténtalo de nuevo.");
+		}
 	};
-	console.log(newStudent);
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
 			<form
 				onSubmit={handleSubmit}
 				className="min-h-screen lg:min-h-1/2 grid grid-cols-1 w-full bg-gradient lg:w-1/3 rounded-lg p-2">
-				<h1 className="text-center">Estudiante</h1>
+				<div className="flex flex-row  items-center justify-evenly">
+					<a href="/" className="p-3 rounded-[20px] shadow-md">Volver</a>
+					<h1 className="text-2xl text-center">Estudiante</h1>
+				</div>
 				<div className="grid grid-cols-1 gap-2">
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre
@@ -231,12 +247,11 @@ const PostStudent = () => {
 							/>
 						</div>
 					</label>
-				<a href="/" className="text-center cursor-pointer" onClick={handleSubmit}>
-					Enviar
-				</a>
+					<a href="/" className="text-center cursor-pointer" onClick={handleSubmit}>
+						Enviar
+					</a>
 				</div>
 			</form>
-			<a href="/">Volver</a>
 		</div>
 	);
 };

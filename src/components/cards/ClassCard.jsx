@@ -41,7 +41,7 @@ const ClassCard = ({item, id}) => {
 		}));
 	};
 	return (
-		<div key={item.id} className="min-h-[250px] w-[150px] rounded-[20px] shadow-md px-[10px]">
+		<div key={item.id} className="min-h-[250px] w-[250px] rounded-[20px] shadow-md px-[10px]">
 			{!editClassToggle ? (
 				<div>
 					<div className="flex flex-row justify-between">
@@ -50,7 +50,7 @@ const ClassCard = ({item, id}) => {
 							<EditIcon />
 						</a>
 					</div>
-					<ul className="grid grid-cols-1 gap-1">
+					<ul className="grid grid-cols-1 gap-2">
 						<li>
 							{item.classDay &&
 								`${item.classDay.slice(8, 10)}/${item.classDay.slice(5, 7)}/${item.classDay.slice(0, 4)}`}
@@ -67,7 +67,7 @@ const ClassCard = ({item, id}) => {
 			) : (
 				<form onSubmit={handleSubmit}>
 					<div>
-						<ul className="grid grid-cols-1 gap-1">
+						<ul className="grid grid-cols-1 gap-2">
 							<div className="flex flex-row justify-between">
 								<input
 									className="w-1/2 shadow-sm text-end rounded-[20px]"
@@ -98,7 +98,7 @@ const ClassCard = ({item, id}) => {
 								onChange={handleChange}
 							/>
 							{currentItem.classPaid === true ? (
-								<a onClick={handleChangeCheckbox}>Pagado</a>
+								<a className="cursor-pointer" onClick={handleChangeCheckbox}>Pagado</a>
 							) : (
 								<input
 									className="shadow-sm text-end rounded-[20px] h-[20px]"
@@ -117,7 +117,7 @@ const ClassCard = ({item, id}) => {
 								onChange={handleChange}
 							/>
 							{currentItem.ovenPaid === true ? (
-								<a onClick={handleChangeCheckboxOven}>Pagado</a>
+								<a className="cursor-pointer" onClick={handleChangeCheckboxOven}>Pagado</a>
 							) : (
 								<input
 									className="shadow-sm text-end rounded-[20px] h-[20px]"
@@ -128,21 +128,21 @@ const ClassCard = ({item, id}) => {
 								/>
 							)}
 							<input
-								className="shadow-sm text-end rounded-[20px]"
-								type="text"
+								className="shadow-sm text-end rounded-[20px] h-[40px]"
+								type="textarea"
 								name="materialName"
 								value={currentItem.materialName}
 								onChange={handleChange}
 							/>
 							<input
-								className="shadow-sm text-end rounded-[20px]"
+								className="shadow-sm text-end rounded-[20px] h-[40px]"
 								type="text"
 								name="materialPrice"
 								value={currentItem.materialPrice}
 								onChange={handleChange}
 							/>
 							{currentItem.materialPaid === true ? (
-								<a onClick={handleChangeCheckboxMaterial}>Pagado</a>
+								<a className="cursor-pointer" onClick={handleChangeCheckboxMaterial}>Pagado</a>
 							) : (
 								<input
 									className="shadow-sm text-end rounded-[20px] h-[20px]"

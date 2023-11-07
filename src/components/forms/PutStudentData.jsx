@@ -78,7 +78,7 @@ const PutStudentData = ({newStudent, setNewStudent, handleEdit, handleChange, id
 					</select>
 				</label>
 			</div>
-			<a href={`/student/${id}`} className="text-center cursor-pointer" onClick={handleSubmit}>
+			<a className="text-center cursor-pointer" onClick={handleSubmit}>
 				Aplicar
 			</a>
 		</form>

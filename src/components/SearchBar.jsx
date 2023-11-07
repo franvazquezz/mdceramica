@@ -9,8 +9,8 @@ const SearchBar = () => {
 	const handleChange = (event) => {
 		setName(event.target.value);
 	};
-  const onSearch = (name) => {
-    try {
+	const onSearch = (name) => {
+		try {
 			dispatch(getStudentByName(name));
 		} catch (error) {
 			console.log(error);
@@ -22,20 +22,18 @@ const SearchBar = () => {
 		return dispatch(removeFinder());
 	};
 	return (
-		<div>
-			<div className="">
-				<input placeholder="Buscar por nombre" className="" type="search" onChange={handleChange} value={name} />
-				<a
-					className="cursor-pointer"
-					onClick={() => {
-						onSearch(name);
-					}}>
-					🔎
-				</a>
-				<a className="cursor-pointer" onClick={handleRemove}>
-					Reset
-				</a>
-			</div>
+		<div className="w-full flex flex-row justify-evenly items-center">
+			<input placeholder="Buscar por nombre" className="p-2 rounded-[20px]" type="search" onChange={handleChange} value={name} />
+			<a
+				className="cursor-pointer"
+				onClick={() => {
+					onSearch(name);
+				}}>
+				🔎
+			</a>
+			<a className="cursor-pointer" onClick={handleRemove}>
+				Reset
+			</a>
 		</div>
 	);
 };
