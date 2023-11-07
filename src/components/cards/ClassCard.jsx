@@ -12,7 +12,6 @@ const ClassCard = ({item, id}) => {
 		setEditClassToggle(!editClassToggle);
 	};
 	const handleSubmit = () => {
-		setEditClassToggle(!editClassToggle);
 		dispatch(putClass(id, currentItem.id, currentItem));
 		setCurrentItem(currentItem);
 	};
