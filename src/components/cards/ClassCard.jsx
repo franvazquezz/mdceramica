@@ -79,7 +79,7 @@ const ClassCard = ({item, id}) => {
 								<a className="text-right cursor-pointer" onClick={handleEditClass}>
 									<EditIcon />
 								</a>
-								<a href={`/student/${id}`} className="text-center cursor-pointer" onClick={handleSubmit}>
+								<a className="text-center cursor-pointer" onClick={handleSubmit}>
 								<VerifiedIcon />
 								</a>
 							</div>
@@ -98,7 +98,7 @@ const ClassCard = ({item, id}) => {
 								onChange={handleChange}
 							/>
 							{currentItem.classPaid === true ? (
-								<p>Pagado</p>
+								<a onClick={handleChangeCheckbox}>Pagado</a>
 							) : (
 								<input
 									className="shadow-sm text-end rounded-[20px] h-[20px]"
@@ -117,7 +117,7 @@ const ClassCard = ({item, id}) => {
 								onChange={handleChange}
 							/>
 							{currentItem.ovenPaid === true ? (
-								<p>Pagado</p>
+								<a onClick={handleChangeCheckboxOven}>Pagado</a>
 							) : (
 								<input
 									className="shadow-sm text-end rounded-[20px] h-[20px]"
@@ -142,7 +142,7 @@ const ClassCard = ({item, id}) => {
 								onChange={handleChange}
 							/>
 							{currentItem.materialPaid === true ? (
-								<p>Pagado</p>
+								<a onClick={handleChangeCheckboxMaterial}>Pagado</a>
 							) : (
 								<input
 									className="shadow-sm text-end rounded-[20px] h-[20px]"

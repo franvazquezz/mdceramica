@@ -1,6 +1,6 @@
 import axios from "axios";
 const URL = 'https://mdceramicaback.onrender.com'
-// const URL = 'http://localhost:3001'
+// const URL = 'http://localhost:5432'
 
 export const getStudents = () => {
   try {
