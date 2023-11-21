@@ -118,10 +118,9 @@ const StudentDetail = () => {
 										</a>
 									</div>
 									<div className="flex flex-row min-w-11/12 text-left">
-										{/* <div className="grid gri-cols-1 lg:grid-cols-2 text-center gap-4"> */}
 										<div className="w-10/12 grid grid-cols-1 text-center gap-6">
-											{currentStudent.classes &&
-												currentStudent.classes.map((item, index) => <ClassCard key={index} item={item} id={id} />)}
+											{currentStudent.classes ?
+													currentStudent.classes.map((item, index) => <ClassCard key={index} item={item} id={id} />) : <p className="text-center text-xl">No hay clases, agregar</p>}
 										</div>
 									</div>
 									<SummaryCard classesIndex={classesIndex} currentStudent={currentStudent} moneyToPay={moneyToPay} />

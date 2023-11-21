@@ -11,16 +11,7 @@ const PostStudent = () => {
 		birthday: "",
 		telephone: "",
 		day: "",
-		timetable: "",
-		className: "",
-		classDay: "",
-		classPrice: "",
-		classPaid: false,
-		ovenPrice: "",
-		ovenPaid: false,
-		materialName: "",
-		materialPrice: "",
-		materialPaid: false,
+		timetable: ""
 	});
 
 	const handleChange = (e) => {
@@ -30,48 +21,17 @@ const PostStudent = () => {
 			[name]: value,
 		}));
 	};
-	const handleChangeCheckbox = () => {
-		setNewStudent((prevClass) => ({
-			...prevClass,
-			classPaid: !prevClass.classPaid,
-		}));
-	};
-	const handleChangeCheckboxOven = () => {
-		setNewStudent((prevClass) => ({
-			...prevClass,
-			ovenPaid: !prevClass.ovenPaid,
-		}));
-	};
-	const handleChangeCheckboxMaterial = () => {
-		setNewStudent((prevClass) => ({
-			...prevClass,
-			materialPaid: !prevClass.materialPaid,
-		}));
-	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		try {
-			const response = await dispatch(postStudent(newStudent));
-			console.log(response.status)
-				setNewStudent({
-					name: "",
-					birthday: "",
-					telephone: "",
-					day: "",
-					timetable: "",
-					className: "",
-					classPrice: "",
-					classPaid: false,
-					classDay: "",
-					ovenPrice: "",
-					materialName: "",
-					materialPrice: "",
-				});
-		} catch (error) {
-			console.error("Error en la solicitud:", error);
-			alert("Error en la solicitud. Por favor, inténtalo de nuevo.");
-		}
+			dispatch(postStudent(newStudent));
+			setNewStudent({
+				name: "",
+				birthday: "",
+				telephone: "",
+				day: "",
+				timetable: ""
+			});
 	};
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
@@ -79,7 +39,9 @@ const PostStudent = () => {
 				onSubmit={handleSubmit}
 				className="min-h-screen lg:min-h-1/2 grid grid-cols-1 w-full bg-gradient lg:w-1/3 rounded-lg p-2">
 				<div className="flex flex-row  items-center justify-evenly">
-					<a href="/" className="p-3 rounded-[20px] shadow-md">Volver</a>
+					<a href="/" className="p-3 rounded-[20px] shadow-md">
+						Volver
+					</a>
 					<h1 className="text-2xl text-center">Estudiante</h1>
 				</div>
 				<div className="grid grid-cols-1 gap-2">
@@ -107,7 +69,7 @@ const PostStudent = () => {
 						Teléfono:
 						<input
 							className="shadow-sm text-end rounded-[20px] p-2"
-							type="text"
+							type="number"
 							name="telephone"
 							value={newStudent.telephone}
 							onChange={handleChange}
@@ -144,103 +106,6 @@ const PostStudent = () => {
 					</label>
 				</div>
 				<div className="grid grid-cols-1 gap-2">
-					<h1 className="text-center">Clase</h1>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Nombre:
-						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="text"
-							name="className"
-							value={newStudent.className}
-							onChange={handleChange}
-						/>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Día:
-						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="date"
-							name="classDay"
-							value={newStudent.classDay}
-							onChange={handleChange}
-						/>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Precio:
-						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="number"
-							name="classPrice"
-							value={newStudent.classPrice}
-							onChange={handleChange}
-						/>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Pagada
-						<div className=" flex flex-row items-center justify-center w-1/2">
-							<input
-								className="shadow-sm text-end rounded-[20px] p-2"
-								type="checkbox"
-								name="classPaid"
-								value={newStudent.classPaid}
-								onChange={handleChangeCheckbox}
-							/>
-						</div>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Precio del horno:
-						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="text"
-							name="ovenPrice"
-							value={newStudent.ovenPrice}
-							onChange={handleChange}
-						/>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Pagado
-						<div className=" flex flex-row items-center justify-center w-1/2">
-							<input
-								className="shadow-sm text-end rounded-[20px] p-2"
-								type="checkbox"
-								name="ovenPaid"
-								value={newStudent.ovenPaid}
-								onChange={handleChangeCheckboxOven}
-							/>
-						</div>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Nombre de los materiales:
-						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="textarea"
-							name="materialName"
-							value={newStudent.materialName}
-							onChange={handleChange}
-						/>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Precio de materiales:
-						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="text"
-							name="materialPrice"
-							value={newStudent.materialPrice}
-							onChange={handleChange}
-						/>
-					</label>
-					<label className="flex flex-row  items-center justify-between px-[10px]">
-						Pagados
-						<div className=" flex flex-row items-center justify-center w-1/2">
-							<input
-								className="shadow-sm text-end rounded-[20px] p-2"
-								type="checkbox"
-								name="materialPaid"
-								value={newStudent.materialPaid}
-								onChange={handleChangeCheckboxMaterial}
-							/>
-						</div>
-					</label>
 					<a className="text-center cursor-pointer" onClick={handleSubmit}>
 						Enviar
 					</a>

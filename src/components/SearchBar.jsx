@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getStudentByName, removeFinder} from "../redux/actions";
-import SearchCard from "./cards/SearchCard";
 
 const SearchBar = () => {
 	const dispatch = useDispatch();

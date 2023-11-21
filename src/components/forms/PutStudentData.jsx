@@ -44,7 +44,7 @@ const PutStudentData = ({newStudent, setNewStudent, handleEdit, handleChange, id
 					Teléfono:
 					<input
 						className="shadow-sm text-end rounded-[20px] p-2"
-						type="text"
+						type="number"
 						name="telephone"
 						value={newStudent.telephone}
 						onChange={handleChange}

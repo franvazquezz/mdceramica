@@ -42,7 +42,7 @@ const PostClassData = ({handleAddClass, id}) => {
 
 	const handleSubmitClass = async () => {
 		try {
-			const response = await dispatch(postClass(id, newClass));
+			await dispatch(postClass(id, newClass));
 				alert(`Clase ${newClass.className} ha sido creada, actualize la pagina`);
 				setNewClass({
 					className: "",
@@ -55,7 +55,6 @@ const PostClassData = ({handleAddClass, id}) => {
 				});
 		} catch (error) {
 			console.error("Error en la solicitud:", error);
-			alert("Error en la solicitud. Por favor, inténtalo de nuevo.");
 		}
 	};
 
@@ -109,7 +108,7 @@ const PostClassData = ({handleAddClass, id}) => {
 					Precio del horno:
 					<input
 						className="shadow-sm text-end rounded-[20px] p-2"
-						type="text"
+						type="number"
 						name="ovenPrice"
 						value={newClass.ovenPrice}
 						onChange={handleChangeClass}
@@ -141,7 +140,7 @@ const PostClassData = ({handleAddClass, id}) => {
 					Precio de materiales:
 					<input
 						className="shadow-sm text-end rounded-[20px] min-h-[40px] p-2"
-						type="text"
+						type="number"
 						name="materialPrice"
 						value={newClass.materialPrice}
 						onChange={handleChangeClass}
