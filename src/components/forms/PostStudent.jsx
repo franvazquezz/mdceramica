@@ -54,7 +54,7 @@ const PostStudent = () => {
 		try {
 			const response = await dispatch(postStudent(newStudent));
 	
-			if (response.status === 200) {
+			if (response.status === 201) {
 				// La solicitud fue exitosa, puedes actualizar el estado
 				alert(`Estudiante ${newStudent.name} fue creado correctamente`);
 				setNewStudent({
@@ -128,6 +128,7 @@ const PostStudent = () => {
 							name="day"
 							value={newStudent.day}
 							onChange={handleChange}>
+							<option hidden>Seleccione un día</option>
 							<option>Lunes</option>
 							<option>Martes</option>
 							<option>Miércoles</option>
@@ -143,6 +144,7 @@ const PostStudent = () => {
 							name="timetable"
 							value={newStudent.timetable}
 							onChange={handleChange}>
+							<option hidden>Seleccione horario</option>
 							<option>10:00</option>
 							<option>16:00</option>
 							<option>18:30</option>
@@ -247,7 +249,7 @@ const PostStudent = () => {
 							/>
 						</div>
 					</label>
-					<a href="/" className="text-center cursor-pointer" onClick={handleSubmit}>
+					<a className="text-center cursor-pointer" onClick={handleSubmit}>
 						Enviar
 					</a>
 				</div>

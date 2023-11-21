@@ -112,7 +112,7 @@ const StudentDetail = () => {
 							{!addClassToggle ? (
 								<div>
 									<div className="flex flex-row items-center justify-center gap-[50px]">
-										<p className="text-center text-2xl">Clases</p>
+										<p className="text-center text-2xl">Clases o Meses</p>
 										<a className="cursor-pointer" onClick={handleAddClass}>
 											<AddIcon />
 										</a>

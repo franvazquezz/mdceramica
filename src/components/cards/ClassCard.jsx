@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import {useDispatch, useSelector} from "react-redux";
-import {getClass, getStudentById, putClass} from "../../redux/actions";
+import {useDispatch} from "react-redux";
+import {putClass} from "../../redux/actions";
 
-const ClassCard = ({item, id}) => {
+const ClassCard = ({ item, id }) => {
 	const dispatch = useDispatch();
 	const [editClassToggle, setEditClassToggle] = useState(false);
 	const [currentItem, setCurrentItem] = useState(item);
@@ -15,6 +15,14 @@ const ClassCard = ({item, id}) => {
 		dispatch(putClass(id, currentItem.id, currentItem));
 		setCurrentItem(currentItem);
 	};
+	// useEffect(() => {
+  //   const timeoutId = setTimeout(() => {
+  //     // Recarga la página después de 1 segundo
+  //     window.location.reload();
+  //   }, 1000);
+
+  //   return () => clearTimeout(timeoutId); // Limpia el temporizador si el componente se desmonta antes de que se complete el tiempo de espera
+  // }, [currentItem]);
 	const handleChange = (e) => {
 		setCurrentItem((prevItem) => ({
 			...prevItem,
@@ -78,7 +86,7 @@ const ClassCard = ({item, id}) => {
 								<a className="text-right cursor-pointer" onClick={handleEditClass}>
 									<EditIcon />
 								</a>
-								<a className="text-center cursor-pointer" onClick={handleSubmit}>
+									<a className="text-center cursor-pointer" onClick={handleSubmit}>
 								<VerifiedIcon />
 								</a>
 							</div>

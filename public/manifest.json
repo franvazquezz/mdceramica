@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MD Cerámica",
+  "name": "App de gestión de alumnos",
   "icons": [
     {
       "src": "favicon.ico",
