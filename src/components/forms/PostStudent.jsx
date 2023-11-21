@@ -53,6 +53,7 @@ const PostStudent = () => {
 		e.preventDefault();
 		try {
 			const response = await dispatch(postStudent(newStudent));
+			console.log(response.status)
 				setNewStudent({
 					name: "",
 					birthday: "",

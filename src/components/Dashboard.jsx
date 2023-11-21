@@ -12,8 +12,7 @@ export default function Dashboard() {
 	}, []);
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
-			<SearchBar />
-			<a href="/poststudent" className="text-2xl text-gray-700">
+			<a href="/poststudent" className="text-2xl text-gray-700 p-2 shadow-md rounded-[20px]">
 				Crear nuevo estudiante
 			</a>
 			<div className="flex flex-col content-fit">
@@ -265,34 +264,6 @@ export default function Dashboard() {
 						allStudentsCalendar.map(
 							(stu, index) =>
 								stu.timetable === "10:00" &&
-								stu.day === "Sábado" && (
-									<a
-										href={`/student/${stu.id}`}
-										key={index}
-										className="text-2xl font-semibold text-gradient focus:shadow-orange-200 hover:shadow-lime-200 text-center p-2">
-										{stu.name}
-									</a>
-								)
-						)}
-					<p>16:00</p>
-					{allStudentsCalendar &&
-						allStudentsCalendar.map(
-							(stu, index) =>
-								stu.timetable === "16:00" &&
-								stu.day === "Sábado" && (
-									<a
-										href={`/student/${stu.id}`}
-										key={index}
-										className="text-2xl font-semibold text-gradient focus:shadow-orange-200 hover:shadow-lime-200 text-center p-2">
-										{stu.name}
-									</a>
-								)
-						)}
-					<p>18:30</p>
-					{allStudentsCalendar &&
-						allStudentsCalendar.map(
-							(stu, index) =>
-								stu.timetable === "18:30" &&
 								stu.day === "Sábado" && (
 									<a
 										href={`/student/${stu.id}`}

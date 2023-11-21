@@ -35,7 +35,9 @@ const reducer = (state = initialState, action) => {
     case 'DELETE_STUDENT':
       return {
         ...state,
-        allStudents: [...state.allStudents, action.payload]
+        allStudents: [...state.allStudents, action.payload],
+        studentsName: [...state.studentsName,action.payload]
+
       }
     case 'GET_CLASS':
       return {
