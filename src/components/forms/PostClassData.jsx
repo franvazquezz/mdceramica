@@ -43,9 +43,6 @@ const PostClassData = ({handleAddClass, id}) => {
 	const handleSubmitClass = async () => {
 		try {
 			const response = await dispatch(postClass(id, newClass));
-	
-			if (response.status === 201) {
-				// La solicitud fue exitosa, puedes actualizar el estado
 				alert(`Clase ${newClass.className} ha sido creada, actualize la pagina`);
 				setNewClass({
 					className: "",
@@ -56,11 +53,6 @@ const PostClassData = ({handleAddClass, id}) => {
 					materialName: "",
 					materialPrice: "",
 				});
-			} else {
-				// La respuesta no fue exitosa, puedes manejarlo de acuerdo a tus necesidades
-				console.log("La solicitud no fue exitosa. Código de estado:", response.status);
-				alert("Error en la solicitud. Por favor, inténtalo de nuevo.");
-			}
 		} catch (error) {
 			console.error("Error en la solicitud:", error);
 			alert("Error en la solicitud. Por favor, inténtalo de nuevo.");
