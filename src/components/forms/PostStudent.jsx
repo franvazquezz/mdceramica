@@ -53,10 +53,6 @@ const PostStudent = () => {
 		e.preventDefault();
 		try {
 			const response = await dispatch(postStudent(newStudent));
-	
-			if (response.status === 201) {
-				// La solicitud fue exitosa, puedes actualizar el estado
-				alert(`Estudiante ${newStudent.name} fue creado correctamente`);
 				setNewStudent({
 					name: "",
 					birthday: "",
@@ -71,11 +67,6 @@ const PostStudent = () => {
 					materialName: "",
 					materialPrice: "",
 				});
-			} else {
-				// La respuesta no fue exitosa, puedes manejarlo de acuerdo a tus necesidades
-				console.log("La solicitud no fue exitosa. Código de estado:", response.status);
-				alert("La solicitud no fue exitosa. Por favor, inténtalo de nuevo.");
-			}
 		} catch (error) {
 			console.error("Error en la solicitud:", error);
 			alert("Error en la solicitud. Por favor, inténtalo de nuevo.");
