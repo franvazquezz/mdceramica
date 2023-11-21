@@ -119,7 +119,7 @@ const StudentDetail = () => {
 									</div>
 									<div className="flex flex-row min-w-11/12 text-left">
 										<div className="w-10/12 grid grid-cols-1 text-center gap-6">
-											{currentStudent.classes ?
+											{currentStudent.classes.length >= 1 ?
 													currentStudent.classes.map((item, index) => <ClassCard key={index} item={item} id={id} />) : <p className="text-center text-xl">No hay clases, agregar</p>}
 										</div>
 									</div>
