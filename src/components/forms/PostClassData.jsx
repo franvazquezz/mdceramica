@@ -44,9 +44,9 @@ const PostClassData = ({handleAddClass, id}) => {
 		try {
 			const response = await dispatch(postClass(id, newClass));
 	
-			if (response.status === 200) {
+			if (response.status === 201) {
 				// La solicitud fue exitosa, puedes actualizar el estado
-				alert(`Clase ${newClass.className} ha sido creada, actualize la ppagina`);
+				alert(`Clase ${newClass.className} ha sido creada, actualize la pagina`);
 				setNewClass({
 					className: "",
 					classDay: "",
