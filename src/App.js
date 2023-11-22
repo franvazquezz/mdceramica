@@ -8,7 +8,7 @@ import Calendar from './components/Calendar';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path='/poststudent' element={<PostStudent />} />

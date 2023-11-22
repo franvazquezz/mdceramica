@@ -73,12 +73,12 @@ const StudentDetail = () => {
 			{loading ? (
 				<p>Cargando alumno...</p>
 			) : (
-				<div className="min-h-screen flex flex-col justify-evenly items-center bg-red-gradient p-5">
-					<div className="w-[200px] flex flex-row items-center justify-center gap-[50px]">
-						<a href="/" className="text-center">
+				<div className="min-h-screen flex flex-col justify-evenly items-center p-2">
+					<div className="w-[200px] flex flex-row items-center justify-center gap-[50px] rounded-[20px]">
+						<a href="/" className="text-center rounded-[20px] bg-white bg-opacity-50 p-2">
 							Volver
 						</a>
-						<a className="text-center cursor-pointer" onClick={handleDeleteSure}>
+						<a className="text-center cursor-pointer rounded-[20px] bg-white bg-opacity-50 p-2" onClick={handleDeleteSure}>
 							<DeleteIcon />
 						</a>
 					</div>
@@ -86,17 +86,17 @@ const StudentDetail = () => {
 						<div>
 							<p>{`Estás seguro de eliminar a ${currentStudent.name}`}?</p>
 							<div className="flex flex-row items-center justify-evenly">
-								<a href="/" className="text-center cursor-pointer" onClick={handleDelete}>
+								<a href="/" className="text-center cursor-pointer rounded-[20px] bg-white bg-opacity-50 p-2" onClick={handleDelete}>
 									Si
 								</a>
-								<a className="text-center cursor-pointer" onClick={handleDeleteSure}>
+								<a className="text-center cursor-pointer rounded-[20px] bg-white bg-opacity-50 p-2" onClick={handleDeleteSure}>
 									No
 								</a>
 							</div>
 						</div>
 					)}
-					<p className="text-3xl text-center">{currentStudent.name} </p>
-					<div className="min-h-[600px] w-full lg:w-2/3 flex flex-col items-center justify-evenly rounded-[20px] shadow-md">
+					<p className="font-semibold text-3xl text-center rounded-[20px]  bg-white bg-opacity-50 shadow-lg px-2">{currentStudent.name} </p>
+					<div className="min-h-[600px] w-full lg:w-2/3 flex flex-col items-center justify-evenly rounded-[20px] bg-white bg-opacity-50 shadow-lg px-2">
 						{!editToggle ? (
 							<DataCard currentStudent={currentStudent} handleEdit={handleEdit} />
 						) : (
@@ -108,17 +108,17 @@ const StudentDetail = () => {
 								id={id}
 							/>
 						)}
-						<div className="grid grid-cols-1">
+						<div className="grid grid-cols-1 gap-4">
 							{!addClassToggle ? (
-								<div>
+								<div className="flex flex-col gap-4">
 									<div className="flex flex-row items-center justify-center gap-[50px]">
 										<p className="text-center text-2xl">Clases o Meses</p>
 										<a className="cursor-pointer" onClick={handleAddClass}>
 											<AddIcon />
 										</a>
 									</div>
-									<div className="flex flex-row min-w-11/12 text-left">
-										<div className="w-10/12 grid grid-cols-1 text-center gap-6">
+									<div className="flex flex-row min-w-11/12 text-left items-center justify-center">
+										<div className="w-10/12 grid grid-cols-1 place-content-center text-center gap-6">
 											{currentStudent.classes.length >= 1 ?
 													currentStudent.classes.map((item, index) => <ClassCard key={index} item={item} id={id} />) : <p className="text-center text-xl">No hay clases, agregar</p>}
 										</div>

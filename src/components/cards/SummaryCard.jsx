@@ -1,7 +1,7 @@
 import React from "react";
 
 const SummaryCard = ({ currentStudent }) => {
-  const totalClasses = currentStudent.classes ? currentStudent.classes.length : 0;
+  const totalClasses = currentStudent.classes.length >=1 ? currentStudent.classes.length : 0;
 
   const moneyToPay = currentStudent.classes
     ? currentStudent.classes.reduce(
@@ -49,7 +49,7 @@ const SummaryCard = ({ currentStudent }) => {
         <p className="text-left">{`Clases por pagar (${
           totalClasses > moneyToPay.number
             ? totalClasses - moneyToPay.number
-            : moneyToPay.number
+            : "0"
         }) : `}</p>
         <p>${moneyToPay.class}</p>
       </div>

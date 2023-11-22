@@ -11,8 +11,8 @@ export default function Dashboard() {
 		dispatch(getStudents());
 	}, []);
 	return (
-		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
-			<a href="/poststudent" className="text-2xl text-gray-700 p-2 shadow-md rounded-[20px]">
+		<div className="min-h-screen flex flex-col items-center justify-evenly">
+			<a href="/poststudent" className="text-2xl text-gray-700 p-2 shadow-md rounded-[20px] z-10 bg-red-100 mt-5">
 				Crear nuevo estudiante
 			</a>
 			<div className="flex flex-col content-fit">
