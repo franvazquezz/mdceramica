@@ -10,9 +10,18 @@ const PutStudentData = ({newStudent, setNewStudent, handleEdit, handleChange, id
 		setNewStudent(currentStudent);
 	}, [currentStudent]);
 
-	const handleSubmit = () => {
-		dispatch(putStudent(id, newStudent));
-		setNewStudent(currentStudent);
+	const handleSubmit = async () => {
+		try {
+			await dispatch(putStudent(id, newStudent));
+			Swal.fire({
+				title: "Bien hecho!",
+				text: "Datos actualizados correctamente!",
+				icon: "success",
+			});
+			setNewStudent(currentStudent);
+		} catch (error) {
+			console.error(error)
+		}
 	};
 	return (
 		<form onSubmit={handleSubmit} className="lg:min-h-1/2 grid grid-cols-1 w-full bg-gradient lg:w-1/2 rounded-lg p-2">

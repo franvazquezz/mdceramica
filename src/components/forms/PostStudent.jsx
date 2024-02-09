@@ -2,7 +2,9 @@
 import {postStudent} from "../../redux/actions";
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
+import Swal from "sweetalert2";
 import "../../App.css";
+import { Link } from "react-router-dom";
 
 const PostStudent = () => {
 	const dispatch = useDispatch();
@@ -22,9 +24,15 @@ const PostStudent = () => {
 		}));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-			dispatch(postStudent(newStudent));
+		try {
+			const response = await dispatch(postStudent(newStudent));
+			Swal.fire({
+				title: "Bien hecho!",
+				text: "Alumno creado correctamente!",
+				icon: "success",
+			});
 			setNewStudent({
 				name: "",
 				birthday: "",
@@ -32,6 +40,10 @@ const PostStudent = () => {
 				day: "",
 				timetable: ""
 			});
+			return response
+		} catch (error) {
+			console.error(error);
+		}
 	};
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
@@ -39,9 +51,9 @@ const PostStudent = () => {
 				onSubmit={handleSubmit}
 				className="min-h-screen lg:min-h-1/2 grid grid-cols-1 w-full bg-gradient lg:w-1/3 rounded-lg p-2">
 				<div className="flex flex-row  items-center justify-evenly">
-					<a href="/" className="p-3 rounded-[20px] shadow-md">
+					<Link to="/" className="p-3 rounded-[20px] shadow-md">
 						Volver
-					</a>
+					</Link>
 					<h1 className="text-2xl text-center">Estudiante</h1>
 				</div>
 				<div className="grid grid-cols-1 gap-2">

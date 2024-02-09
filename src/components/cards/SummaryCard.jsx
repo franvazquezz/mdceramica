@@ -1,10 +1,10 @@
 import React from "react";
 
 const SummaryCard = ({ currentStudent }) => {
-  const totalClasses = currentStudent.classes.length >=1 ? currentStudent.classes.length : 0;
+  const totalClasses = currentStudent?.classes.length >=1 ? currentStudent?.classes.length : 0;
 
-  const moneyToPay = currentStudent.classes
-    ? currentStudent.classes.reduce(
+  const moneyToPay = currentStudent?.classes
+    ? currentStudent?.classes.reduce(
         (total, clase) => {
           if (clase.classPaid) {
             total.number += 1;

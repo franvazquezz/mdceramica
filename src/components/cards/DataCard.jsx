@@ -13,17 +13,17 @@ const DataCard = ({handleEdit, currentStudent}) => {
 			<li className="flex flex-row justify-between">
 				Cumpleaños:{" "}
 				<p>
-  {currentStudent.birthday && currentStudent.birthday.slice(8, 10)}/{currentStudent.birthday && currentStudent.birthday.slice(5, 7)}/{currentStudent.birthday && currentStudent.birthday.slice(0, 4)}
+  {currentStudent?.birthday && currentStudent?.birthday.slice(8, 10)}/{currentStudent?.birthday && currentStudent?.birthday.slice(5, 7)}/{currentStudent?.birthday && currentStudent?.birthday.slice(0, 4)}
 </p>
 			</li>
 			<li className="flex flex-row justify-between">
-				Teléfono: <p>{currentStudent.telephone}</p>
+				Teléfono: <p>{currentStudent?.telephone}</p>
 			</li>
 			<li className="flex flex-row justify-between">
-				Día que viene: <p>{currentStudent.day}</p>
+				Día que viene: <p>{currentStudent?.day}</p>
 			</li>
 			<li className="flex flex-row justify-between">
-				Horario: <p>{currentStudent.timetable}</p>
+				Horario: <p>{currentStudent?.timetable}</p>
 			</li>
 		</ul>
 	);
