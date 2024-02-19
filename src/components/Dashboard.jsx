@@ -68,8 +68,6 @@ export default function Dashboard() {
 
     return formattedDate;
   };
-
-  console.log(studentBirthdays);
   useEffect(() => {
     dispatch(getStudents());
   }, []);
