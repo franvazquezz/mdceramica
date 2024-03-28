@@ -43,12 +43,15 @@ const PostClassData = ({ handleAddClass, id }) => {
 
   const handleSubmitClass = async () => {
     try {
-      const response = await dispatch(postClass(id, newClass));
+      await dispatch(postClass(id, newClass));
       Swal.fire({
         title: "Bien hecho!",
         text: "Clase creada correctamente!",
         icon: "success",
       });
+      setTimeout(() => {
+        window.location.href = `/student/${id}`;
+      }, 1000);
       setNewClass({
         className: "",
         classDay: "",
@@ -58,7 +61,6 @@ const PostClassData = ({ handleAddClass, id }) => {
         materialName: "",
         materialPrice: "",
       });
-      return response;
     } catch (error) {
       console.error(error);
     }

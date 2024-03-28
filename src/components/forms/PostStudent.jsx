@@ -46,12 +46,12 @@ const PostStudent = () => {
 		}
 	};
 	return (
-		<div className="min-h-screen flex flex-col items-center justify-evenly bg-red-gradient">
+		<div className="min-h-screen flex flex-col items-center justify-evenly bg-carta-100 text-[#ab58b8] font-semibold">
 			<form
 				onSubmit={handleSubmit}
 				className="min-h-screen lg:min-h-1/2 grid grid-cols-1 w-full bg-gradient lg:w-1/3 rounded-lg p-2">
 				<div className="flex flex-row  items-center justify-evenly">
-					<Link to="/" className="p-3 rounded-[20px] shadow-md">
+					<Link to="/" className="p-2 rounded-[20px] bg-transparent border-2 border-carta-100 shadow-md">
 						Volver
 					</Link>
 					<h1 className="text-2xl text-center">Estudiante</h1>
@@ -60,7 +60,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Nombre
 						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
+							className="text-end text-black outline-none rounded-[20px] shadow-lg  border border-yellow-200 p-2"
 							type="text"
 							name="name"
 							value={newStudent.name}
@@ -70,7 +70,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Cumpleaños:
 						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
+							className="text-end text-black outline-none rounded-[20px] shadow-lg  border border-yellow-200 p-2"
 							type="date"
 							name="birthday"
 							value={newStudent.birthday}
@@ -80,8 +80,8 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Teléfono:
 						<input
-							className="shadow-sm text-end rounded-[20px] p-2"
-							type="number"
+							className="text-end text-black outline-none rounded-[20px] shadow-lg  border border-yellow-200 p-2"
+							type="text"
 							name="telephone"
 							value={newStudent.telephone}
 							onChange={handleChange}
@@ -90,7 +90,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Día que viene:
 						<select
-							className="shadow-sm text-end rounded-[20px] p-2 w-1/2"
+							className="text-end text-black outline-none rounded-[20px] shadow-lg  border border-yellow-200 p-2 w-1/2"
 							name="day"
 							value={newStudent.day}
 							onChange={handleChange}>
@@ -106,7 +106,7 @@ const PostStudent = () => {
 					<label className="flex flex-row  items-center justify-between px-[10px]">
 						Horario:
 						<select
-							className="shadow-sm text-end rounded-[20px] p-2 w-1/2"
+							className="text-end text-black outline-none rounded-[20px] shadow-lg  border border-yellow-200 p-2 w-1/2"
 							name="timetable"
 							value={newStudent.timetable}
 							onChange={handleChange}>
@@ -117,8 +117,8 @@ const PostStudent = () => {
 						</select>
 					</label>
 				</div>
-				<div className="grid grid-cols-1 gap-2">
-					<a className="text-center cursor-pointer" onClick={handleSubmit}>
+				<div className="flex flex-col items-center justify-center gap-2">
+					<a className="text-center cursor-pointer p-2 rounded-[20px] bg-transparent border border-yellow-200 shadow-md" onClick={handleSubmit}>
 						Enviar
 					</a>
 				</div>

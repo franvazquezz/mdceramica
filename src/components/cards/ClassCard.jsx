@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
-import VerifiedIcon from "@mui/icons-material/Verified";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch } from "react-redux";
-import { putClass } from "../../redux/actions";
+import { deleteClass, putClass } from "../../redux/actions";
 import Swal from "sweetalert2";
 
 const ClassCard = ({ item, id }) => {
@@ -12,7 +12,27 @@ const ClassCard = ({ item, id }) => {
   const handleEditClass = () => {
     setEditClassToggle(!editClassToggle);
   };
-  const handleSubmit = async () => {
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Quieres eliminar la clase?",
+      showDenyButton: true,
+      showConfirmButton: false,
+      showCancelButton: true,
+      denyButtonText: `Eliminar`,
+      cancelButtonText: `Mantener`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isDenied) {
+        dispatch(deleteClass(id, currentItem.id));
+        Swal.fire("Clase eliminada!", "", "success");
+        setTimeout(() => {
+          window.location.href = `/student/${id}`;
+        }, 1000);
+      } else if (result.isConfirmed) {
+      }
+    });
+  };
+  const handleSubmit = () => {
     try {
       if (currentItem.assistance === null) {
         setCurrentItem((prevClass) => ({
@@ -20,13 +40,16 @@ const ClassCard = ({ item, id }) => {
           assistance: [false, false, false, false],
         }));
       }
-      await dispatch(putClass(id, currentItem.id, currentItem));
+      dispatch(putClass(id, currentItem.id, currentItem));
       setCurrentItem(currentItem);
       Swal.fire({
         title: "Bien hecho!",
         text: "Clase actualizada correctamente!",
         icon: "success",
       });
+      setTimeout(() => {
+        window.location.href = `/student/${id}`;
+      }, 1000);
       setEditClassToggle(!editClassToggle);
     } catch (error) {}
   };
@@ -74,6 +97,9 @@ const ClassCard = ({ item, id }) => {
             <p>{item.className}</p>
             <a className="text-right cursor-pointer" onClick={handleEditClass}>
               <EditIcon />
+            </a>
+            <a className="text-right cursor-pointer" onClick={handleDelete}>
+              <DeleteIcon />
             </a>
           </div>
           <ul className="grid grid-cols-1 w-10/12 gap-1">
@@ -133,24 +159,10 @@ const ClassCard = ({ item, id }) => {
         <form onSubmit={handleSubmit}>
           <div>
             <ul className="grid grid-cols-1 gap-2">
-              <div className="flex flex-row justify-evenly">
-                <a
-                  className="text-right cursor-pointer"
-                  onClick={handleEditClass}
-                >
-                  <EditIcon />
-                </a>
-                <a
-                  className="text-center cursor-pointer"
-                  onClick={handleSubmit}
-                >
-                  <VerifiedIcon />
-                </a>
-              </div>
               <div className="flex flex-row justify-between">
                 <p className="text-start w-1/4">Clase: </p>
                 <input
-                  className="shadow-sm text-end rounded-[20px]"
+                  className="shadow-sm text-end rounded-[20px] w-full"
                   type="text"
                   name="className"
                   value={currentItem.className}
@@ -158,11 +170,11 @@ const ClassCard = ({ item, id }) => {
                 />
               </div>
               <div className="flex flex-row justify-between">
-                <h4 className="w-1/2 text-start">Asistencia: </h4>
-                <div className="flex flex-col">
+                <h4 className="w-1/4 text-start">Asistencia: </h4>
+                <div className="grid grid-cols-2 gap-2">
                   {item.assistance &&
                     item.assistance.map((asist, index) => (
-                      <div key={index}>
+                      <div key={index} className="flex gap-1">
                         <input
                           type="checkbox"
                           checked={currentItem.assistance[index]}
@@ -176,7 +188,7 @@ const ClassCard = ({ item, id }) => {
               <div className="flex flex-row justify-between">
                 <p className="text-start w-1/4">Día: </p>
                 <input
-                  className="shadow-sm text-end rounded-[20px]"
+                  className="shadow-sm text-end rounded-[20px] w-full"
                   type="date"
                   name="classDay"
                   value={currentItem.classDay}
@@ -184,9 +196,9 @@ const ClassCard = ({ item, id }) => {
                 />
               </div>
               <div className="flex flex-row justify-between">
-                <p className="text-start w-1/4">Precio: </p>
+                <p className="text-start w-1/4">Precio mes: </p>
                 <input
-                  className="shadow-sm text-end rounded-[20px]"
+                  className="shadow-sm text-end rounded-[20px] w-full"
                   type="number"
                   name="classPrice"
                   value={currentItem.classPrice}
@@ -201,7 +213,7 @@ const ClassCard = ({ item, id }) => {
                   </a>
                 ) : (
                   <input
-                    className="shadow-sm text-end rounded-[20px] h-[20px]"
+                    className="text-end rounded-[20px] w-full h-[20px]"
                     type="checkbox"
                     name="classPaid"
                     value={currentItem.classPaid}
@@ -212,7 +224,7 @@ const ClassCard = ({ item, id }) => {
               <div className="flex flex-row justify-between">
                 <p className="text-start w-1/4">Precio horno: </p>
                 <input
-                  className="shadow-sm text-end rounded-[20px]"
+                  className="shadow-sm text-end rounded-[20px] w-full"
                   type="number"
                   name="ovenPrice"
                   value={currentItem.ovenPrice}
@@ -230,7 +242,7 @@ const ClassCard = ({ item, id }) => {
                   </a>
                 ) : (
                   <input
-                    className="shadow-sm text-end rounded-[20px] h-[20px]"
+                    className="text-end rounded-[20px] w-full h-[20px]"
                     type="checkbox"
                     name="ovenPaid"
                     value={currentItem.ovenPaid}
@@ -239,10 +251,9 @@ const ClassCard = ({ item, id }) => {
                 )}
               </div>
               <div className="flex flex-row justify-between">
-                <p className="text-start w-1/4">Materiales usados: </p>
-                <input
-                  className="shadow-sm text-end rounded-[20px]"
-                  type="textarea"
+                <p className="text-start w-1/4">Materiales: </p>
+                <textarea
+                  className="shadow-sm text-end rounded-[20px] p-2 min-h-[100px] w-3/4"
                   name="materialName"
                   value={currentItem.materialName}
                   onChange={handleChange}
@@ -251,7 +262,7 @@ const ClassCard = ({ item, id }) => {
               <div className="flex flex-row justify-between">
                 <p className="text-start w-1/4">Precio: </p>
                 <input
-                  className="shadow-sm text-end rounded-[20px] h-[40px]"
+                  className="shadow-sm text-end rounded-[20px] w-full h-[40px]"
                   type="text"
                   name="materialPrice"
                   value={currentItem.materialPrice}
@@ -269,13 +280,27 @@ const ClassCard = ({ item, id }) => {
                   </a>
                 ) : (
                   <input
-                    className="shadow-sm text-end rounded-[20px] h-[20px]"
+                    className="text-end rounded-[20px] w-full h-[20px]"
                     type="checkbox"
                     name="materialPaid"
                     value={currentItem.materialPaid}
                     onChange={handleChangeCheckboxMaterial}
                   />
                 )}
+              </div>
+              <div className="flex items-center justify-center gap-8">
+                <a
+                  className="text-center cursor-pointer rounded-[20px] p-2 shadow-md"
+                  onClick={handleEditClass}
+                >
+                  Cancelar
+                </a>
+                <a
+                  className="text-center cursor-pointer rounded-[20px] p-2 shadow-md"
+                  onClick={handleSubmit}
+                >
+                  Aplicar
+                </a>
               </div>
             </ul>
           </div>

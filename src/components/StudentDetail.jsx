@@ -67,17 +67,17 @@ const StudentDetail = () => {
 
 	const handleDelete = () => {
 		Swal.fire({
-			title: "Do you want to save the changes?",
+			title: "Quieres eliminar el estudiante?",
 			showDenyButton: true,
 			showConfirmButton: false,
 			showCancelButton: true,
-			denyButtonText: `Delete`,
-			cancelButtonText: `Maintain`,
+			denyButtonText: `Eliminar`,
+			cancelButtonText: `Mantener`,
 		}).then((result) => {
 			/* Read more about isConfirmed, isDenied below */
 			if (result.isDenied) {
 				dispatch(deleteStudent(id));
-				Swal.fire("Deleted successfully!", "", "success");
+				Swal.fire("Estudiante eliminado!", "", "success");
 				setTimeout(() => {
 					window.location.href = "/";
 				}, 1000);
@@ -113,7 +113,7 @@ const StudentDetail = () => {
 								id={id}
 							/>
 						)}
-						<div className="grid grid-cols-1 gap-4">
+						<div className="flex flex-col gap-4">
 							{!addClassToggle ? (
 								<div className="flex flex-col gap-4">
 									<div className="flex flex-row items-center justify-center gap-[50px]">
@@ -123,7 +123,7 @@ const StudentDetail = () => {
 										</a>
 									</div>
 									<div className="flex flex-row min-w-11/12 text-left items-center justify-center">
-										<div className="w-10/12 grid grid-cols-1 place-content-center text-center gap-6">
+										<div className="w-full grid grid-cols-1 place-content-center text-center gap-6">
 											{student?.classes && student?.classes.length >= 1 ? (
 												student?.classes.map((item, index) => <ClassCard key={index} item={item} id={id} />)
 											) : (

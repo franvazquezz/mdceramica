@@ -57,6 +57,7 @@ const reducer = (state = initialState, action) => {
       };
     case "REMOVE_FINDER":
       return {
+        ...state,
         studentsName: [],
       };
     default:
