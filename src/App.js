@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import PostStudent from './components/forms/PostStudent';
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import StudentDetail from './components/StudentDetail';
 import Calendar from './components/Calendar';
 
