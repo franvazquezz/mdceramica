@@ -35,7 +35,7 @@ const SummaryCard = ({ currentStudent }) => {
     moneyToPay.class + moneyToPay.oven + moneyToPay.materials;
 
   return (
-    <div className="min-w-[350px] flex flex-col justify-between">
+    <div className="min-w-[350px] flex flex-col text-xl justify-between">
       <p className="text-2xl text-center">Resumen</p>
       <div className="flex flex-row justify-between px-6">
         <p className="text-left">Clases hechas: </p>

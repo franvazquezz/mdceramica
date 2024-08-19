@@ -10,6 +10,7 @@ import ClassCard from "./cards/ClassCard";
 import SummaryCard from "./cards/SummaryCard";
 import DataCard from "./cards/DataCard";
 import Swal from "sweetalert2";
+import {ArrowLeft, Plus, Trash} from "tabler-icons-react";
 
 const StudentDetail = () => {
 	const dispatch = useDispatch();
@@ -86,22 +87,20 @@ const StudentDetail = () => {
 		});
 	};
 	return (
-		<main>
+		<>
 			{loading ? (
 				<p>Cargando alumno...</p>
 			) : (
-				<div className="min-h-screen flex flex-col justify-evenly items-center p-2">
-					<div className="w-[200px] flex flex-row items-center justify-center gap-[50px] rounded-[20px]">
-						<Link to="/" className="p-3 rounded-[20px] shadow-md">
-							Volver
+				<div className="min-h-screen flex flex-col items-center">
+					<div className="w-10/12 pt-2 flex justify-between">
+						<Link to="/">
+							<ArrowLeft size={"2rem"}></ArrowLeft>
 						</Link>
-						<DeleteIcon onClick={handleDelete} />
+						<button onClick={handleDelete} className="focus:opacity-80">
+							<Trash></Trash>
+						</button>
 					</div>
-
-					<p className="font-semibold text-3xl text-center rounded-[20px]  bg-white bg-opacity-50 shadow-lg px-2">
-						{student?.name}{" "}
-					</p>
-					<div className="min-h-[600px] w-full lg:w-2/3 flex flex-col items-center justify-evenly rounded-[20px] bg-white bg-opacity-50 shadow-lg px-2">
+					<div>
 						{!editToggle ? (
 							<DataCard currentStudent={student} handleEdit={handleEdit} />
 						) : (
@@ -117,13 +116,13 @@ const StudentDetail = () => {
 							{!addClassToggle ? (
 								<div className="flex flex-col gap-4">
 									<div className="flex flex-row items-center justify-center gap-[50px]">
-										<p className="text-center text-2xl">Clases o Meses</p>
+										<p className="text-center text-2xl font-semibold">Meses</p>
 										<a className="cursor-pointer" onClick={handleAddClass}>
-											<AddIcon />
+											<Plus />
 										</a>
 									</div>
 									<div className="flex flex-row min-w-11/12 text-left items-center justify-center">
-										<div className="w-full grid grid-cols-1 place-content-center text-center gap-6">
+										<div className="w-full grid grid-cols-1 place-items-center text-center gap-4">
 											{student?.classes && student?.classes.length >= 1 ? (
 												student?.classes.map((item, index) => <ClassCard key={index} item={item} id={id} />)
 											) : (
@@ -140,7 +139,7 @@ const StudentDetail = () => {
 					</div>
 				</div>
 			)}
-		</main>
+		</>
 	);
 };
 

@@ -10,6 +10,7 @@ const PostClassData = ({ handleAddClass, id }) => {
     classDay: "",
     classPrice: "",
     classPaid: false,
+    ovenName: "",
     ovenPrice: "",
     ovenPaid: false,
     materialName: "",
@@ -57,6 +58,7 @@ const PostClassData = ({ handleAddClass, id }) => {
         classDay: "",
         classPrice: "",
         classPaid: false,
+        ovenName: "",
         ovenPrice: "",
         materialName: "",
         materialPrice: "",
@@ -68,7 +70,7 @@ const PostClassData = ({ handleAddClass, id }) => {
 
   return (
     <form onSubmit={handleSubmitClass}>
-      <div className="grid grid-cols-1 gap-2">
+      <div className="min-h-screen grid grid-cols-1 text-xl gap-2">
         <h1 className="text-center">Clase</h1>
         <label className="flex flex-row  items-center justify-between px-[10px]">
           Nombre:
@@ -111,6 +113,16 @@ const PostClassData = ({ handleAddClass, id }) => {
               onChange={handleChangeCheckbox}
             />
           </div>
+        </label>
+        <label className="flex flex-row  items-center justify-between px-[10px]">
+          Hornos
+          <input
+            className="shadow-sm text-end rounded-[20px] p-2"
+            type="text"
+            name="ovenName"
+            value={newClass.ovenName}
+            onChange={handleChangeClass}
+          />
         </label>
         <label className="flex flex-row  items-center justify-between px-[10px]">
           Precio del horno:
@@ -167,7 +179,7 @@ const PostClassData = ({ handleAddClass, id }) => {
           </div>
         </label>
       </div>
-      <div className="flex flex-row items-center justify-evenly">
+      <div className="flex flex-row items-center justify-evenly pb-4">
         <a
           className="text-center cursor-pointer flex flex-row items-center shadow-md justify-center pt-2"
           onClick={handleAddClass}
