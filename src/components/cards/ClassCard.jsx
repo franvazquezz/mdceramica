@@ -1,11 +1,8 @@
 import React, {useState} from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import {useDispatch} from "react-redux";
 import {deleteClass, putClass} from "../../redux/actions";
 import Swal from "sweetalert2";
-import {Calendar, Check, Checkbox, Pencil, SquareCheck, Trash, UserCheck, X} from "tabler-icons-react";
-import {CheckBoxOutlined, IndeterminateCheckBox, RadioButtonUnchecked} from "@mui/icons-material";
+import {Calendar, Check, Pencil, Trash, UserCheck, X} from "tabler-icons-react";
 
 const ClassCard = ({item, id}) => {
 	const dispatch = useDispatch();
@@ -224,7 +221,7 @@ const ClassCard = ({item, id}) => {
 								<p className="text-start w-1/4">Precio horno</p>
 								<input
 									className="shadow-sm text-end rounded-[20px] w-full"
-									type="number"
+									type="text"
 									name="ovenPrice"
 									value={currentItem.ovenPrice}
 									onChange={handleChange}

@@ -128,7 +128,7 @@ const PostClassData = ({ handleAddClass, id }) => {
           Precio del horno:
           <input
             className="shadow-sm text-end rounded-[20px] p-2"
-            type="number"
+            type="text"
             name="ovenPrice"
             value={newClass.ovenPrice}
             onChange={handleChangeClass}

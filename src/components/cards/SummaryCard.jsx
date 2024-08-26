@@ -15,7 +15,10 @@ const SummaryCard = ({ currentStudent }) => {
           }
 
           if (!clase.ovenPaid) {
-            total.oven += parseInt(clase.ovenPrice);
+            let splitted = clase.ovenPrice.split(",");
+            for (let i = 0; i < splitted.length; i++) {
+              total.oven += parseInt(splitted[i]);
+            }
           }
 
           if (!clase.materialPaid) {
